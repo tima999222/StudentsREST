@@ -14,8 +14,9 @@ namespace StudentsREST.Controllers
 
         public StudentsController()
         {
-            // получаем конфигурацию проекта где есть путь до файла, укажи свой полный путь до файла appsetting.json
-            var config = new ConfigurationBuilder().AddJsonFile("C:\\Users\\Тимофей\\source\\repos\\StudentsREST\\StudentsREST\\appsettings.json").Build();
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+            // получаем конфигурацию проекта где есть путь до файла
+            var config = new ConfigurationBuilder().AddJsonFile(filePath).Build();
             _pathToJson = config["Path"]; // путь до файла со студентами, который мы указали в appsettings.json
 
             if (System.IO.File.Exists(_pathToJson)) //проверка если файл существует
